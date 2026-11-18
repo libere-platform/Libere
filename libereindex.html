@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LIBERÉ — A freed Life is a freed Soul.</title>
+  <style>
+    :root {
+      /* Comforting & Relaxing Autumn Palette */
+      --bg-cream: #faf5ee;
+      --bg-linen: #fffdf9;
+      --bg-sand: #f2e6d8;
+      --bg-terracotta-soft: #f5e2d8;
+      --bg-sage-soft: #e7ece2;
+
+      --text-espresso: #3a2d27;
+      --text-taupe: #6d5c53;
+      --text-muted: #938177;
+
+      --accent-terracotta: #c26d4a;
+      --accent-terracotta-hover: #a85838;
+      --accent-sage: #768868;
+      --accent-amber: #d49653;
+
+      --border-almond: #e5d6c5;
+      --shadow-warm: 0 10px 30px rgba(58, 45, 39, 0.06);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+
+      --font-serif: "Georgia", "Times New Roman", serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--bg-cream);
+      color: var(--text-espresso);
+      font-family: var(--font-sans);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Header & Expandable Search Bar */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background-color: rgba(250, 245, 238, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-almond);
+    }
+
+    .nav-wrapper {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0.9rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      text-decoration: none;
+      color: var(--text-espresso);
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .brand-leaf {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-terracotta), var(--accent-amber));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 0.85rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-taupe);
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-terracotta);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .icon-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--border-almond);
+      background-color: var(--bg-linen);
+      color: var(--text-espresso);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .icon-btn:hover {
+      border-color: var(--accent-terracotta);
+      color: var(--accent-terracotta);
+      background-color: var(--bg-terracotta-soft);
+    }
+
+    .notif-dot {
+      position: absolute;
+      top: 8px;
+      right: 9px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background-color: var(--accent-terracotta);
+    }
+
+    /* Longer Expandable Global Search Bar */
+    .global-search-bar {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 1.5rem 0.9rem;
+      display: none;
+    }
+
+    .global-search-bar.open {
+      display: block;
+    }
+
+    .search-input-box {
+      display: flex;
+      align-items: center;
+      background-color: var(--bg-linen);
+      border: 1.5px solid var(--accent-terracotta);
+      border-radius: var(--radius-pill);
+      padding: 0.55rem 1.1rem;
+      box-shadow: var(--shadow-warm);
+    }
+
+    .search-input-box input {
+      flex: 1;
+      border: none;
+      background: transparent;
+      font-size: 0.96rem;
+      color: var(--text-espresso);
+      padding: 0 0.75rem;
+      outline: none;
+    }
+
+    .clear-search-btn {
+      background: none;
+      border: none;
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 0 0.25rem;
+      line-height: 1;
+    }
+
+    .clear-search-btn:hover {
+      color: var(--accent-terracotta);
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background-color: var(--accent-terracotta);
+      color: #ffffff;
+      border: none;
+      padding: 0.65rem 1.35rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--accent-terracotta-hover);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background-color: var(--bg-linen);
+      color: var(--text-espresso);
+      border: 1px solid var(--border-almond);
+      padding: 0.65rem 1.35rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--accent-sage);
+      background-color: var(--bg-sage-soft);
+    }
+
+    /* Hero Section */
+    .hero {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 4.2rem 1.5rem 3rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .tagline-pill {
+      display: inline-block;
+      background-color: var(--bg-terracotta-soft);
+      color: var(--accent-terracotta);
+      padding: 0.35rem 1rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.18;
+      color: var(--text-espresso);
+      margin-bottom: 0.85rem;
+    }
+
+    .hero-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.22rem;
+      color: var(--accent-terracotta);
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-desc {
+      max-width: 620px;
+      margin: 0 auto 2rem;
+      color: var(--text-taupe);
+      font-size: 1.02rem;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      justify-content: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    /* Section Containers */
+    .section {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-serif);
+      font-size: 1.85rem;
+      font-weight: 400;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-header p {
+      color: var(--text-taupe);
+      font-size: 0.96rem;
+    }
+
+    /* Three Core Pillars (Freedom Journal, The Freed Souls, Freedom Gallery) */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .pillar-card {
+      background-color: var(--bg-linen);
+      border: 1px solid var(--border-almond);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.65rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: var(--shadow-warm);
+    }
+
+    .pillar-card:hover,
+    .pillar-card.active {
+      transform: translateY(-4px);
+      border-color: var(--accent-terracotta);
+      background-color: #fffaf4;
+    }
+
+    .pillar-icon {
+      width: 52px;
+      height: 52px;
+      margin: 0 auto 1.1rem;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    .pillar-icon.journal {
+      background-color: var(--bg-terracotta-soft);
+      color: var(--accent-terracotta);
+    }
+
+    .pillar-icon.souls {
+      background-color: var(--bg-sage-soft);
+      color: var(--accent-sage);
+    }
+
+    .pillar-icon.gallery {
+      background-color: #f7ebd9;
+      color: #b97a38;
+    }
+
+    .pillar-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.2rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.45rem;
+    }
+
+    .pillar-card p {
+      color: var(--text-taupe);
+      font-size: 0.94rem;
+    }
+
+    /* Moving Slides: Quick Information About Us */
+    .about-carousel-box {
+      background: linear-gradient(135deg, var(--bg-sand) 0%, var(--bg-sage-soft) 100%);
+      border: 1px solid var(--border-almond);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slides-track {
+      position: relative;
+      min-height: 170px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slide {
+      display: none;
+      max-width: 720px;
+      text-align: center;
+      animation: fadeSlide 0.45s ease;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    @keyframes fadeSlide {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .slide-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent-sage);
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    .slide h3 {
+      font-family: var(--font-serif);
+      font-size: 1.55rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+
+    .slide p {
+      color: var(--text-taupe);
+      font-size: 1rem;
+    }
+
+    .carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .slide-arrow {
+      background-color: var(--bg-linen);
+      border: 1px solid var(--border-almond);
+      color: var(--text-espresso);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .slide-arrow:hover {
+      background-color: var(--accent-terracotta);
+      color: #fff;
+      border-color: var(--accent-terracotta);
+    }
+
+    .slide-dots {
+      display: flex;
+      gap: 0.45rem;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background-color: rgba(58, 45, 39, 0.22);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .dot.active {
+      width: 22px;
+      border-radius: var(--radius-pill);
+      background-color: var(--accent-terracotta);
+    }
+
+    /* "TO: [Name] / MESSAGES" Wall & Dedicated Search Bar */
+    .messages-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .recipient-search {
+      flex: 1;
+      min-width: 260px;
+      display: flex;
+      align-items: center;
+      background-color: var(--bg-linen);
+      border: 1px solid var(--border-almond);
+      border-radius: var(--radius-pill);
+      padding: 0.55rem 1rem;
+    }
+
+    .recipient-search input {
+      border: none;
+      background: transparent;
+      width: 100%;
+      padding-left: 0.6rem;
+      font-size: 0.92rem;
+      color: var(--text-espresso);
+      outline: none;
+    }
+
+    .messages-scroll-area {
+      max-height: 460px;
+      overflow-y: auto;
+      padding-right: 0.4rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 1.15rem;
+    }
+
+    .messages-scroll-area::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .messages-scroll-area::-webkit-scrollbar-thumb {
+      background-color: var(--border-almond);
+      border-radius: 999px;
+    }
+
+    .to-card {
+      background-color: var(--bg-linen);
+      border: 1px solid var(--border-almond);
+      border-radius: var(--radius-md);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease;
+    }
+
+    .to-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent-amber);
+    }
+
+    .to-header {
+      border-bottom: 1px dashed var(--border-almond);
+      padding-bottom: 0.55rem;
+      margin-bottom: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .to-recipient {
+      font-weight: 700;
+      font-size: 0.92rem;
+      color: var(--accent-terracotta);
+      letter-spacing: 0.02em;
+    }
+
+    .to-tag {
+      font-size: 0.74rem;
+      background-color: var(--bg-sand);
+      color: var(--text-taupe);
+      padding: 0.15rem 0.55rem;
+      border-radius: 6px;
+    }
+
+    .to-body {
+      font-family: var(--font-serif);
+      font-size: 0.98rem;
+      color: var(--text-espresso);
+      margin-bottom: 0.9rem;
+      white-space: pre-line;
+    }
+
+    .to-footer {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Community Reflections & Freedom Gallery Feed */
+    .filter-pills {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.75rem;
+    }
+
+    .pill-btn {
+      background-color: var(--bg-linen);
+      border: 1px solid var(--border-almond);
+      color: var(--text-taupe);
+      padding: 0.45rem 1.05rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.86rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .pill-btn.active,
+    .pill-btn:hover {
+      background-color: var(--accent-sage);
+      border-color: var(--accent-sage);
+      color: #ffffff;
+    }
+
+    .feed-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.35rem;
+    }
+
+    .feed-card {
+      background-color: var(--bg-linen);
+      border: 1px solid var(--border-almond);
+      border-radius: var(--radius-md);
+      padding: 1.45rem;
+      box-shadow: var(--shadow-warm);
+    }
+
+    .gallery-visual {
+      width: 100%;
+      height: 155px;
+      border-radius: 10px;
+      margin-bottom: 0.95rem;
+      display: flex;
+      align-items: flex-end;
+      padding: 0.8rem;
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+
+    .feed-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+    }
+
+    .feed-badge {
+      background-color: var(--bg-sage-soft);
+      color: var(--accent-sage);
+      font-weight: 600;
+      padding: 0.15rem 0.6rem;
+      border-radius: 6px;
+    }
+
+    .feed-card h4 {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .feed-card p {
+      color: var(--text-taupe);
+      font-size: 0.93rem;
+    }
+
+    /* Feedback Section */
+    .feedback-box {
+      background-color: var(--bg-linen);
+      border: 1px solid var(--border-almond);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      max-width: 680px;
+      margin: 0 auto;
+      box-shadow: var(--shadow-warm);
+      text-align: center;
+    }
+
+    .feedback-box h2 {
+      font-family: var(--font-serif);
+      font-size: 1.65rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+
+    .feedback-box p {
+      color: var(--text-taupe);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .mood-options {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+    }
+
+    .mood-btn {
+      background-color: var(--bg-cream);
+      border: 1px solid var(--border-almond);
+      border-radius: var(--radius-pill);
+      padding: 0.4rem 0.95rem;
+      font-size: 0.85rem;
+      color: var(--text-taupe);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .mood-btn.selected,
+    .mood-btn:hover {
+      background-color: var(--bg-terracotta-soft);
+      border-color: var(--accent-terracotta);
+      color: var(--accent-terracotta);
+      font-weight: 600;
+    }
+
+    .feedback-form textarea,
+    .feedback-form input {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border-almond);
+      border-radius: var(--radius-md);
+      background-color: var(--bg-cream);
+      color: var(--text-espresso);
+      font-family: var(--font-sans);
+      font-size: 0.94rem;
+      margin-bottom: 0.95rem;
+      outline: none;
+    }
+
+    .feedback-form textarea:focus,
+    .feedback-form input:focus {
+      border-color: var(--accent-terracotta);
+    }
+
+    .feedback-success {
+      display: none;
+      margin-top: 1rem;
+      padding: 0.8rem;
+      border-radius: var(--radius-md);
+      background-color: var(--bg-sage-soft);
+      color: var(--accent-sage);
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(58, 45, 39, 0.45);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      z-index: 60;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal-card {
+      background-color: var(--bg-linen);
+      border: 1px solid var(--border-almond);
+      border-radius: var(--radius-lg);
+      max-width: 480px;
+      width: 100%;
+      padding: 1.8rem;
+      box-shadow: var(--shadow-warm);
+    }
+
+    .modal-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.2rem;
+    }
+
+    .modal-top h3 {
+      font-family: var(--font-serif);
+      font-size: 1.35rem;
+      font-weight: 400;
+    }
+
+    .form-field {
+      margin-bottom: 0.95rem;
+      text-align: left;
+    }
+
+    .form-field label {
+      display: block;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: var(--text-taupe);
+      margin-bottom: 0.35rem;
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      border: 1px solid var(--border-almond);
+      border-radius: 10px;
+      background-color: var(--bg-cream);
+      color: var(--text-espresso);
+      font-family: var(--font-sans);
+      font-size: 0.92rem;
+    }
+
+    .form-field textarea {
+      min-height: 105px;
+      resize: vertical;
+    }
+
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      background-color: var(--bg-linen);
+      border: 1px dashed var(--border-almond);
+      border-radius: var(--radius-md);
+    }
+
+    footer {
+      border-top: 1px solid var(--border-almond);
+      background-color: var(--bg-sand);
+      text-align: center;
+      padding: 2.2rem 1.5rem;
+      margin-top: 3rem;
+      color: var(--text-taupe);
+      font-size: 0.88rem;
+    }
+
+    footer strong {
+      font-family: var(--font-serif);
+      color: var(--text-espresso);
+      letter-spacing: 0.06em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <div class="nav-wrapper">
+      <a href="#home" class="brand">
+        <span class="brand-leaf">&#10047;</span>
+        LIBERÉ
+      </a>
+
+      <nav class="nav-links">
+        <a href="#home">Homepage</a>
+        <a href="#souls">Souls &amp; Messages</a>
+        <a href="#about">About Us</a>
+        <a href="#feedback">Feedback</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn" id="toggleGlobalSearch" title="Search Liberé" aria-label="Search">&#128269;</button>
+        <button class="icon-btn" id="notifBtn" title="Daily Comfort Note" aria-label="Notifications">
+          &#128276;
+          <span class="notif-dot"></span>
+        </button>
+        <button class="btn-primary" id="openShareModal">+ Express</button>
+      </div>
+    </div>
+
+    <!-- Longer Expandable Search Bar -->
+    <div class="global-search-bar" id="globalSearchBar">
+      <div class="search-input-box">
+        <span>&#128269;</span>
+        <input
+          type="text"
+          id="globalSearchInput"
+          placeholder="Search messages by name, journal reflections, or comforting thoughts..."
+        />
+        <button class="clear-search-btn" id="clearGlobalSearch" title="Clear search">&times;</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <span class="tagline-pill">A freed Life is a freed Soul.</span>
+    <h1>A freed Life, a freed Soul.</h1>
+    <p class="hero-quote">&ldquo;You were born to live, not merely to fit in.&rdquo;</p>
+    <p class="hero-desc">
+      A comforting digital sanctuary for teenagers and young adults navigating stress, self-doubt, and pressure. Pause, breathe, express what you feel, and embrace who you are becoming.
+    </p>
+    <div class="hero-cta-group">
+      <button class="btn-primary" id="heroWriteBtn">Let Your Soul Speak</button>
+      <a href="#souls" class="btn-secondary">Read &ldquo;To:&rdquo; Messages</a>
+    </div>
+  </section>
+
+  <!-- Three Core Pillars -->
+  <section class="section" id="pillars">
+    <div class="pillars-grid">
+      <div class="pillar-card" data-jump="Freedom Journal">
+        <div class="pillar-icon journal">&#9998;</div>
+        <h3>FREEDOM JOURNAL</h3>
+        <p>Let your soul speak. Unload heavy thoughts and write freely without fear of judgment.</p>
+      </div>
+
+      <div class="pillar-card" data-jump="The Freed Souls">
+        <div class="pillar-icon souls">&#9825;</div>
+        <h3>THE FREED SOULS</h3>
+        <p>You don&rsquo;t have to find your freedom alone. Connect through shared encouragement and empathy.</p>
+      </div>
+
+      <div class="pillar-card" data-jump="Freedom Gallery">
+        <div class="pillar-icon gallery">&#9788;</div>
+        <h3>FREEDOM GALLERY</h3>
+        <p>Capture what sets you free. Quiet moments, warm skies, and small reminders of peace.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Moving Slides: Quick Information About Us -->
+  <section class="section" id="about">
+    <div class="about-carousel-box" id="carouselBox">
+      <div class="slides-track">
+        <div class="slide active">
+          <span class="slide-label">About Liberé &middot; 01</span>
+          <h3>Why Liberé Exists</h3>
+          <p>
+            Growing up comes with loud expectations, quiet self-doubt, and uncertainty about the future. Liberé was created as an interactive refuge where you can understand yourself without rushing.
+          </p>
+        </div>
+
+        <div class="slide">
+          <span class="slide-label">Our Community &middot; 02</span>
+          <h3>For Teenagers &amp; Young Adults</h3>
+          <p>
+            Whether you are overwhelmed by school, comparing your timeline to others, or simply needing a gentle space to exhale, your emotions are valid here.
+          </p>
+        </div>
+
+        <div class="slide">
+          <span class="slide-label">Our Promise &middot; 03</span>
+          <h3>Embrace Your Individuality</h3>
+          <p>
+            You do not have to shrink or conform to belong. Through open letters, personal journaling, and calming visuals, Liberé celebrates authentic self-expression.
+          </p>
+        </div>
+      </div>
+
+      <div class="carousel-controls">
+        <button class="slide-arrow" id="prevSlide" aria-label="Previous slide">&#8592;</button>
+        <div class="slide-dots" id="slideDots">
+          <button class="dot active" data-index="0" aria-label="Slide 1"></button>
+          <button class="dot" data-index="1" aria-label="Slide 2"></button>
+          <button class="dot" data-index="2" aria-label="Slide 3"></button>
+        </div>
+        <button class="slide-arrow" id="nextSlide" aria-label="Next slide">&#8594;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scrollable "TO: [Name] / MESSAGES" Wall + Search Bar 2 -->
+  <section class="section" id="souls">
+    <div class="section-header">
+      <h2>The Freed Souls &mdash; Open Messages</h2>
+      <p>Send an unsent note, a reminder to someone struggling, or words of kindness to your future self.</p>
+    </div>
+
+    <div class="messages-controls">
+      <div class="recipient-search">
+        <span>&#128269;</span>
+        <input
+          type="text"
+          id="recipientSearchInput"
+          placeholder="Search by recipient name (e.g., To: Maya, Future Me, Anyone Tired)..."
+        />
+      </div>
+      <button class="btn-primary" id="openToModalBtn">+ Write a &ldquo;To:&rdquo; Message</button>
+    </div>
+
+    <div class="messages-scroll-area" id="toMessagesGrid"></div>
+  </section>
+
+  <!-- Freedom Journal & Freedom Gallery Feed -->
+  <section class="section" id="community-feed">
+    <div class="section-header">
+      <h2>Reflections &amp; Moments</h2>
+      <p>Explore entries from the Freedom Journal, The Freed Souls, and Freedom Gallery.</p>
+    </div>
+
+    <div class="filter-pills" id="feedFilters">
+      <button class="pill-btn active" data-category="all">All Spaces</button>
+      <button class="pill-btn" data-category="Freedom Journal">Freedom Journal</button>
+      <button class="pill-btn" data-category="The Freed Souls">The Freed Souls</button>
+      <button class="pill-btn" data-category="Freedom Gallery">Freedom Gallery</button>
+    </div>
+
+    <div class="feed-grid" id="feedGrid"></div>
+  </section>
+
+  <!-- Feedback Section -->
+  <section class="section" id="feedback">
+    <div class="feedback-box">
+      <h2>We would love to know what you think about us</h2>
+      <p>Your voice shapes Liberé. Share how this space makes you feel or what features would comfort you most.</p>
+
+      <div class="mood-options" id="moodOptions">
+        <button type="button" class="mood-btn" data-mood="Comforted">Comforted &#127810;</button>
+        <button type="button" class="mood-btn" data-mood="Inspired">Inspired &#10024;</button>
+        <button type="button" class="mood-btn" data-mood="Understood">Understood &#129309;</button>
+        <button type="button" class="mood-btn" data-mood="Peaceful">Peaceful &#127807;</button>
+      </div>
+
+      <form class="feedback-form" id="feedbackForm">
+        <input type="text" id="feedbackName" placeholder="Your name or nickname (optional)" />
+        <textarea id="feedbackMessage" rows="3" placeholder="Tell us your thoughts, ideas, or feelings..." required></textarea>
+        <button type="submit" class="btn-primary">Send Feedback</button>
+      </form>
+
+      <div class="feedback-success" id="feedbackSuccess">
+        Thank you for sharing your heart with Liberé. Your feedback has been received.
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>LIBERÉ</strong> &mdash; A freed Life is a freed Soul.</p>
+    <p style="margin-top: 0.35rem; font-size: 0.82rem;">A safe space to understand yourself, express your emotions, and breathe.</p>
+  </footer>
+
+  <!-- Modal for Posting "To:" Messages or Journal/Gallery Entries -->
+  <div class="modal-backdrop" id="shareModal">
+    <div class="modal-card">
+      <div class="modal-top">
+        <h3 id="modalTitle">Express Your Soul</h3>
+        <button class="clear-search-btn" id="closeShareModal">&times;</button>
+      </div>
+
+      <form id="postForm">
+        <div class="form-field">
+          <label for="postType">Where would you like to share?</label>
+          <select id="postType">
+            <option value="to-message">Open Message Board (TO: Someone)</option>
+            <option value="Freedom Journal">Freedom Journal (Personal Reflection)</option>
+            <option value="The Freed Souls">The Freed Souls (Peer Encouragement)</option>
+            <option value="Freedom Gallery">Freedom Gallery (Calming Moment)</option>
+          </select>
+        </div>
+
+        <div class="form-field" id="recipientField">
+          <label for="postRecipient">TO: (Recipient Name)</label>
+          <input type="text" id="postRecipient" placeholder="e.g., My Future Self, Alex, Anyone Stressed" />
+        </div>
+
+        <div class="form-field" id="titleField" style="display: none;">
+          <label for="postHeadline">Title</label>
+          <input type="text" id="postHeadline" placeholder="e.g., Learning to Let Go of Pressure" />
+        </div>
+
+        <div class="form-field">
+          <label for="postContent">Your Message or Reflection</label>
+          <textarea id="postContent" placeholder="Write honestly and gently..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-primary" style="width: 100%;">Publish to Liberé</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Initial Data
+    const initialToMessages = [
+      {
+        to: "Anyone Feeling Behind",
+        message: "You are not late to your own life. Take a deep breath—healing and figuring things out do not follow a deadline.",
+        tag: "Comfort",
+        date: "Today"
+      },
+      {
+        to: "My Future Self",
+        message: "I hope you remember how hard we tried during the quiet nights when we doubted everything. I am proud of you for keeping going.",
+        tag: "Self-Love",
+        date: "2h ago"
+      },
+      {
+        to: "Sam",
+        message: "You don't always have to carry everyone else's expectations on your shoulders. It is okay to rest.",
+        tag: "Encouragement",
+        date: "5h ago"
+      },
+      {
+        to: "The Version of Me Who Tried to Fit In",
+        message: "Thank you for trying to keep us safe, but we are allowed to be uniquely ourselves now.",
+        tag: "Freedom",
+        date: "1d ago"
+      },
+      {
+        to: "Late Night Overthinkers",
+        message: "Not every worry in your head is a prediction. Unclench your jaw, drop your shoulders, and let tonight be gentle.",
+        tag: "Peace",
+        date: "1d ago"
+      },
+      {
+        to: "A Friend I Outgrew",
+        message: "Even though our paths went different ways, I still genuinely hope you find everything that makes your soul feel light.",
+        tag: "Closure",
+        date: "2d ago"
+      }
+    ];
+
+    const initialFeedEntries = [
+      {
+        category: "Freedom Journal",
+        title: "Outgrowing the Need for Approval",
+        meta: "Anonymous Soul · 4 min read",
+        content: "For years I measured my worth by how little trouble I caused and how well I blended in. Writing here reminds me that my voice matters even when it shakes.",
+        gradient: ""
+      },
+      {
+        category: "Freedom Gallery",
+        title: "October Sunset Over Quiet Rooftops",
+        meta: "Captured Moment · Warm Amber",
+        content: "Watching the sky turn burnt orange and soft gold after a stressful week of exams—a reminder that every heavy day still ends in stillness.",
+        gradient: "linear-gradient(135deg, #c26d4a 0%, #d49653 55%, #768868 100%)"
+      },
+      {
+        category: "The Freed Souls",
+        title: "To Everyone Uncertain About College & Career",
+        meta: "Community Circle · 18 Hearts",
+        content: "You don't need a five-year master plan at nineteen. Focus on the next honest step that aligns with who you are.",
+        gradient: ""
+      },
+      {
+        category: "Freedom Gallery",
+        title: "Morning Tea & Fallen Leaves",
+        meta: "Captured Moment · Autumn Sage",
+        content: "Ten quiet minutes before opening my phone. Peace begins when we protect our mornings.",
+        gradient: "linear-gradient(135deg, #768868 0%, #b79b78 60%, #e5d6c5 100%)"
+      }
+    ];
+
+    // Load saved posts from localStorage
+    const savedTo = JSON.parse(localStorage.getItem("libere_to_messages")) || [];
+    const savedFeed = JSON.parse(localStorage.getItem("libere_feed_entries")) || [];
+
+    let toMessages = [...savedTo, ...initialToMessages];
+    let feedEntries = [...savedFeed, ...initialFeedEntries];
+
+    let globalQuery = "";
+    let recipientQuery = "";
+    let selectedFeedCategory = "all";
+
+    function escapeHTML(str) {
+      return str.replace(/[&<>"']/g, ch => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+      }[ch]));
+    }
+
+    // Render "TO:" Messages Wall
+    function renderToMessages() {
+      const container = document.getElementById("toMessagesGrid");
+      const filtered = toMessages.filter(item => {
+        const matchesRecipient = item.to.toLowerCase().includes(recipientQuery.toLowerCase());
+        const matchesGlobal = !globalQuery ||
+          item.to.toLowerCase().includes(globalQuery) ||
+          item.message.toLowerCase().includes(globalQuery);
+        return matchesRecipient && matchesGlobal;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="empty-state">No messages found matching your search. Be the first to write one!</div>`;
+        return;
+      }
+
+      container.innerHTML = filtered.map(item => `
+        <article class="to-card">
+          <div>
+            <div class="to-header">
+              <span class="to-recipient">TO: ${escapeHTML(item.to)}</span>
+              <span class="to-tag">${escapeHTML(item.tag || "Soul Note")}</span>
+            </div>
+            <p class="to-body">&ldquo;${escapeHTML(item.message)}&rdquo;</p>
+          </div>
+          <div class="to-footer">
+            <span>Liberé Wall</span>
+            <span>${escapeHTML(item.date)}</span>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    // Render Journal, Freed Souls & Gallery Feed
+    function renderFeed() {
+      const container = document.getElementById("feedGrid");
+      const filtered = feedEntries.filter(item => {
+        const matchesCategory = selectedFeedCategory === "all" || item.category === selectedFeedCategory;
+        const matchesGlobal = !globalQuery ||
+          item.title.toLowerCase().includes(globalQuery) ||
+          item.content.toLowerCase().includes(globalQuery) ||
+          item.category.toLowerCase().includes(globalQuery);
+        return matchesCategory && matchesGlobal;
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="empty-state">No reflections match your current filter.</div>`;
+        return;
+      }
+
+      container.innerHTML = filtered.map(item => `
+        <article class="feed-card">
+          ${item.gradient ? `<div class="gallery-visual" style="background: ${item.gradient};">Freedom Gallery Frame</div>` : ""}
+          <div class="feed-meta">
+            <span class="feed-badge">${escapeHTML(item.category)}</span>
+            <span>${escapeHTML(item.meta)}</span>
+          </div>
+          <h4>${escapeHTML(item.title)}</h4>
+          <p>${escapeHTML(item.content)}</p>
+        </article>
+      `).join("");
+    }
+
+    // Moving Slides Logic (Quick Information About Us)
+    const slides = document.querySelectorAll(".slide");
+    const dots = document.querySelectorAll(".dot");
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      currentSlide = (index + slides.length) % slides.length;
+      slides.forEach((s, i) => s.classList.toggle("active", i === currentSlide));
+      dots.forEach((d, i) => d.classList.toggle("active", i === currentSlide));
+    }
+
+    document.getElementById("prevSlide").addEventListener("click", () => showSlide(currentSlide - 1));
+    document.getElementById("nextSlide").addEventListener("click", () => showSlide(currentSlide + 1));
+    dots.forEach(dot => {
+      dot.addEventListener("click", () => showSlide(Number(dot.dataset.index)));
+    });
+
+    let slideTimer = setInterval(() => showSlide(currentSlide + 1), 5000);
+    const carouselBox = document.getElementById("carouselBox");
+    carouselBox.addEventListener("mouseenter", () => clearInterval(slideTimer));
+    carouselBox.addEventListener("mouseleave", () => {
+      slideTimer = setInterval(() => showSlide(currentSlide + 1), 5000);
+    });
+
+    // Global Expandable Search Bar
+    const globalSearchBar = document.getElementById("globalSearchBar");
+    const globalSearchInput = document.getElementById("globalSearchInput");
+
+    document.getElementById("toggleGlobalSearch").addEventListener("click", () => {
+      globalSearchBar.classList.toggle("open");
+      if (globalSearchBar.classList.contains("open")) {
+        globalSearchInput.focus();
+      }
+    });
+
+    globalSearchInput.addEventListener("input", (e) => {
+      globalQuery = e.target.value.trim().toLowerCase();
+      renderToMessages();
+      renderFeed();
+    });
+
+    document.getElementById("clearGlobalSearch").addEventListener("click", () => {
+      globalSearchInput.value = "";
+      globalQuery = "";
+      renderToMessages();
+      renderFeed();
+    });
+
+    // Dedicated "TO:" Recipient Search Bar
+    document.getElementById("recipientSearchInput").addEventListener("input", (e) => {
+      recipientQuery = e.target.value.trim();
+      renderToMessages();
+    });
+
+    // Pillar Card Jump & Filter
+    document.querySelectorAll(".pillar-card").forEach(card => {
+      card.addEventListener("click", () => {
+        const targetCat = card.dataset.jump;
+        selectedFeedCategory = targetCat;
+        document.querySelectorAll(".pill-btn").forEach(b => {
+          b.classList.toggle("active", b.dataset.category === targetCat);
+        });
+        renderFeed();
+        document.getElementById("community-feed").scrollIntoView({ behavior: "smooth" });
+      });
+    });
+
+    // Feed Category Pills
+    document.querySelectorAll(".pill-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".pill-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        selectedFeedCategory = btn.dataset.category;
+        renderFeed();
+      });
+    });
+
+    // Notification Bell Gentle Reminder
+    document.getElementById("notifBtn").addEventListener("click", () => {
+      alert("Daily Liberé Reminder:\n\nYou were born to live, not merely to fit in. Take a slow breath today.");
+    });
+
+    // Modal Controls
+    const shareModal = document.getElementById("shareModal");
+    const postTypeSelect = document.getElementById("postType");
+    const recipientField = document.getElementById("recipientField");
+    const titleField = document.getElementById("titleField");
+
+    function openModalWithType(defaultType = "to-message") {
+      postTypeSelect.value = defaultType;
+      updateModalFields();
+      shareModal.classList.add("open");
+    }
+
+    function updateModalFields() {
+      const isToMessage = postTypeSelect.value === "to-message";
+      recipientField.style.display = isToMessage ? "block" : "none";
+      titleField.style.display = isToMessage ? "none" : "block";
+    }
+
+    postTypeSelect.addEventListener("change", updateModalFields);
+    document.getElementById("openShareModal").addEventListener("click", () => openModalWithType("Freedom Journal"));
+    document.getElementById("heroWriteBtn").addEventListener("click", () => openModalWithType("Freedom Journal"));
+    document.getElementById("openToModalBtn").addEventListener("click", () => openModalWithType("to-message"));
+    document.getElementById("closeShareModal").addEventListener("click", () => shareModal.classList.remove("open"));
+
+    shareModal.addEventListener("click", (e) => {
+      if (e.target === shareModal) shareModal.classList.remove("open");
+    });
+
+    document.getElementById("postForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      const type = postTypeSelect.value;
+      const content = document.getElementById("postContent").value.trim();
+
+      if (type === "to-message") {
+        const recipient = document.getElementById("postRecipient").value.trim() || "Someone Who Needs This";
+        const newMsg = {
+          to: recipient,
+          message: content,
+          tag: "New Note",
+          date: "Just now"
+        };
+        savedTo.unshift(newMsg);
+        localStorage.setItem("libere_to_messages", JSON.stringify(savedTo));
+        toMessages = [...savedTo, ...initialToMessages];
+        renderToMessages();
+      } else {
+        const title = document.getElementById("postHeadline").value.trim() || "Untitled Reflection";
+        const newEntry = {
+          category: type,
+          title,
+          meta: "Shared Just Now",
+          content,
+          gradient: type === "Freedom Gallery"
+            ? "linear-gradient(135deg, #d49653 0%, #c26d4a 55%, #768868 100%)"
+            : ""
+        };
+        savedFeed.unshift(newEntry);
+        localStorage.setItem("libere_feed_entries", JSON.stringify(savedFeed));
+        feedEntries = [...savedFeed, ...initialFeedEntries];
+        renderFeed();
+      }
+
+      e.target.reset();
+      shareModal.classList.remove("open");
+    });
+
+    // Feedback Section Interactions
+    document.querySelectorAll(".mood-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".mood-btn").forEach(b => b.classList.remove("selected"));
+        btn.classList.add("selected");
+      });
+    });
+
+    document.getElementById("feedbackForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      e.target.reset();
+      document.querySelectorAll(".mood-btn").forEach(b => b.classList.remove("selected"));
+      const successBox = document.getElementById("feedbackSuccess");
+      successBox.style.display = "block";
+      setTimeout(() => {
+        successBox.style.display = "none";
+      }, 4500);
+    });
+
+    // Initial Render
+    renderToMessages();
+    renderFeed();
+  </script>
+</body>
+</html>
