@@ -1,4 +1,4 @@
-<index.html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -6,7 +6,6 @@
   <title>LIBERÉ — A freed Life is a freed Soul.</title>
   <style>
     :root {
-      /* Comforting & Relaxing Autumn Palette */
       --bg-cream: #faf5ee;
       --bg-linen: #fffdf9;
       --bg-sand: #f2e6d8;
@@ -50,7 +49,6 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Header & Expandable Search Bar */
     header {
       position: sticky;
       top: 0;
@@ -63,7 +61,7 @@
     .nav-wrapper {
       max-width: 1120px;
       margin: 0 auto;
-      padding: 0.9rem 1.5rem;
+      padding: 1.15rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -74,25 +72,34 @@
     .brand {
       display: flex;
       align-items: center;
-      gap: 0.55rem;
+      gap: 0.9rem;
       text-decoration: none;
       color: var(--text-espresso);
       font-family: var(--font-serif);
-      font-size: 1.5rem;
+      font-size: 2rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.06em;
+      transition: transform 0.2s ease;
     }
 
-    .brand-leaf {
-      width: 26px;
-      height: 26px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent-terracotta), var(--accent-amber));
+    .brand:hover {
+      transform: translateY(-1px);
+    }
+
+    .brand-logo-container {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
-      font-size: 0.85rem;
+      width: 50px;
+      height: 50px;
+      position: relative;
+    }
+
+    .brand-leaf-detailed {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(194, 109, 74, 0.14));
     }
 
     .nav-links {
@@ -104,7 +111,7 @@
     .nav-links a {
       text-decoration: none;
       color: var(--text-taupe);
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 500;
       letter-spacing: 0.03em;
       transition: color 0.2s ease;
@@ -151,7 +158,6 @@
       background-color: var(--accent-terracotta);
     }
 
-    /* Longer Expandable Global Search Bar */
     .global-search-bar {
       max-width: 1120px;
       margin: 0 auto;
@@ -186,10 +192,10 @@
     .clear-search-btn {
       background: none;
       border: none;
-      font-size: 1.25rem;
+      font-size: 1.35rem;
       color: var(--text-muted);
       cursor: pointer;
-      padding: 0 0.25rem;
+      padding: 0 0.3rem;
       line-height: 1;
     }
 
@@ -197,7 +203,6 @@
       color: var(--accent-terracotta);
     }
 
-    /* Buttons */
     .btn-primary {
       background-color: var(--accent-terracotta);
       color: #ffffff;
@@ -233,7 +238,6 @@
       background-color: var(--bg-sage-soft);
     }
 
-    /* Hero Section */
     .hero {
       max-width: 1120px;
       margin: 0 auto;
@@ -286,7 +290,6 @@
       flex-wrap: wrap;
     }
 
-    /* Section Containers */
     .section {
       max-width: 1120px;
       margin: 0 auto;
@@ -310,7 +313,6 @@
       font-size: 0.96rem;
     }
 
-    /* Three Core Pillars (Freedom Journal, The Freed Souls, Freedom Gallery) */
     .pillars-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -373,7 +375,6 @@
       font-size: 0.94rem;
     }
 
-    /* Moving Slides: Quick Information About Us */
     .about-carousel-box {
       background: linear-gradient(135deg, var(--bg-sand) 0%, var(--bg-sage-soft) 100%);
       border: 1px solid var(--border-almond);
@@ -481,7 +482,6 @@
       background-color: var(--accent-terracotta);
     }
 
-    /* "TO: [Name] / MESSAGES" Wall & Dedicated Search Bar */
     .messages-controls {
       display: flex;
       justify-content: space-between;
@@ -513,9 +513,9 @@
     }
 
     .messages-scroll-area {
-      max-height: 460px;
+      max-height: 480px;
       overflow-y: auto;
-      padding-right: 0.4rem;
+      padding: 0.25rem 0.4rem 0.5rem 0.1rem;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
       gap: 1.15rem;
@@ -538,12 +538,14 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 0.2s ease;
+      cursor: pointer;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
     .to-card:hover {
-      transform: translateY(-2px);
-      border-color: var(--accent-amber);
+      transform: translateY(-3px);
+      border-color: var(--accent-terracotta);
+      box-shadow: var(--shadow-warm);
     }
 
     .to-header {
@@ -553,6 +555,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 0.5rem;
     }
 
     .to-recipient {
@@ -568,13 +571,14 @@
       color: var(--text-taupe);
       padding: 0.15rem 0.55rem;
       border-radius: 6px;
+      white-space: nowrap;
     }
 
     .to-body {
       font-family: var(--font-serif);
       font-size: 0.98rem;
       color: var(--text-espresso);
-      margin-bottom: 0.9rem;
+      margin-bottom: 1rem;
       white-space: pre-line;
     }
 
@@ -583,9 +587,19 @@
       color: var(--text-muted);
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      padding-top: 0.5rem;
+      border-top: 1px solid rgba(229, 214, 197, 0.5);
     }
 
-    /* Community Reflections & Freedom Gallery Feed */
+    .reply-pill {
+      color: var(--accent-sage);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
     .filter-pills {
       display: flex;
       justify-content: center;
@@ -624,6 +638,16 @@
       border-radius: var(--radius-md);
       padding: 1.45rem;
       box-shadow: var(--shadow-warm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .feed-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent-sage);
     }
 
     .gallery-visual {
@@ -642,6 +666,8 @@
     .feed-meta {
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
       font-size: 0.78rem;
       color: var(--text-muted);
       margin-bottom: 0.6rem;
@@ -664,9 +690,19 @@
     .feed-card p {
       color: var(--text-taupe);
       font-size: 0.93rem;
+      margin-bottom: 1rem;
     }
 
-    /* Feedback Section */
+    .feed-footer {
+      font-size: 0.79rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.65rem;
+      border-top: 1px solid rgba(229, 214, 197, 0.55);
+    }
+
     .feedback-box {
       background-color: var(--bg-linen);
       border: 1px solid var(--border-almond);
@@ -748,16 +784,16 @@
       font-size: 0.9rem;
     }
 
-    /* Modal */
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background-color: rgba(58, 45, 39, 0.45);
+      background-color: rgba(58, 45, 39, 0.48);
       display: none;
       align-items: center;
       justify-content: center;
       padding: 1rem;
       z-index: 60;
+      overflow-y: auto;
     }
 
     .modal-backdrop.open {
@@ -768,17 +804,21 @@
       background-color: var(--bg-linen);
       border: 1px solid var(--border-almond);
       border-radius: var(--radius-lg);
-      max-width: 480px;
+      max-width: 520px;
       width: 100%;
       padding: 1.8rem;
       box-shadow: var(--shadow-warm);
+      max-height: 90vh;
+      overflow-y: auto;
+      animation: fadeSlide 0.25s ease;
     }
 
     .modal-top {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.1rem;
+      gap: 0.75rem;
     }
 
     .modal-top h3 {
@@ -811,11 +851,115 @@
       color: var(--text-espresso);
       font-family: var(--font-sans);
       font-size: 0.92rem;
+      outline: none;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: var(--accent-terracotta);
     }
 
     .form-field textarea {
-      min-height: 105px;
+      min-height: 95px;
       resize: vertical;
+    }
+
+    .detail-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .detail-title {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      color: var(--text-espresso);
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+
+    .detail-title.is-to {
+      color: var(--accent-terracotta);
+    }
+
+    .detail-full-text {
+      background-color: var(--bg-cream);
+      border: 1px solid var(--border-almond);
+      border-radius: var(--radius-md);
+      padding: 1.2rem;
+      font-family: var(--font-serif);
+      font-size: 1.04rem;
+      color: var(--text-espresso);
+      line-height: 1.75;
+      white-space: pre-line;
+      margin-bottom: 1.35rem;
+    }
+
+    .comments-section {
+      border-top: 1px solid var(--border-almond);
+      padding-top: 1.15rem;
+    }
+
+    .comments-heading {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-taupe);
+      margin-bottom: 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .comments-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      max-height: 210px;
+      overflow-y: auto;
+      margin-bottom: 1.15rem;
+      padding-right: 0.25rem;
+    }
+
+    .comment-bubble {
+      background-color: var(--bg-cream);
+      border: 1px solid var(--border-almond);
+      border-radius: 10px;
+      padding: 0.75rem 0.95rem;
+    }
+
+    .comment-bubble-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .comment-author {
+      font-weight: 700;
+      color: var(--accent-sage);
+    }
+
+    .comment-time {
+      color: var(--text-muted);
+    }
+
+    .comment-text {
+      font-size: 0.9rem;
+      color: var(--text-espresso);
+      white-space: pre-line;
+    }
+
+    .no-comments-note {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      font-style: italic;
+      text-align: center;
+      padding: 0.85rem;
+      background-color: var(--bg-cream);
+      border-radius: 10px;
+      margin-bottom: 1rem;
     }
 
     .empty-state {
@@ -847,11 +991,22 @@
 </head>
 <body>
 
-  <!-- Navigation Bar -->
   <header>
     <div class="nav-wrapper">
       <a href="#home" class="brand">
-        <span class="brand-leaf">&#10047;</span>
+        <span class="brand-logo-container">
+          <svg class="brand-leaf-detailed" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M50 92 C26.8 92 8 73.2 8 50 C8 32.5 18.7 17.5 34 11.2 M66 11.2 C81.3 17.5 92 32.5 92 50 C92 73.2 73.2 92 50 92" stroke="#c26d4a" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="3 3" />
+            <path d="M12 45 C15 30 25 18 38 14 M88 45 C85 30 75 18 62 14" stroke="#768868" stroke-width="2" stroke-linecap="round" />
+            <path d="M25 78 C18 68 15 56 16 44 M75 78 C82 68 85 56 84 44" stroke="#768868" stroke-width="1.5" stroke-linecap="round" />
+            <path d="M30 26 L32 28 L30 30 L28 28 Z M74 24 L76 26 L74 28 L72 26 Z M50 16 L51.5 18 L50 19.5 L48.5 18 Z M18 55 L19.5 57 L18 58.5 L16.5 57 Z" fill="#d49653" />
+            <path d="M22 75 C30 84 44 86 48 85 C42 80 34 76 22 75" stroke="#768868" stroke-width="2" stroke-linecap="round" />
+            <path d="M28 81 C30 79 33 79 34 81 C33 83 30 83 28 81 M35 83 C38 81 40 82 41 84 C39 85 37 85 35 83 M43 85 C45 82 48 83 49 85 C47 86 45 86 43 85" fill="#768868" />
+            <path d="M42 55 C34 47 20 40 16 28 C26 28 36 34 44 41 C48 37 54 32 62 26 C64 23 66 18 68 14 C70 18 72 23 74 26 C66 32 58 37 54 41 C62 34 72 28 82 28 C78 40 64 47 56 55 C60 62 65 72 67 82 C61 74 54 66 50 58 C46 66 39 74 33 82 C35 72 40 62 44 55 Z" fill="#c26d4a" />
+            <path d="M47 43 C49 41 51 41 53 43 C51 45 49 45 47 43" fill="#faf5ee" />
+            <path d="M42 55 C46 51 54 51 58 55" stroke="#d49653" stroke-width="1.5" stroke-linecap="round" />
+          </svg>
+        </span>
         LIBERÉ
       </a>
 
@@ -872,21 +1027,19 @@
       </div>
     </div>
 
-    <!-- Longer Expandable Search Bar -->
     <div class="global-search-bar" id="globalSearchBar">
       <div class="search-input-box">
         <span>&#128269;</span>
         <input
           type="text"
           id="globalSearchInput"
-          placeholder="Search messages by name, journal reflections, or comforting thoughts..."
+          placeholder="Search all messages, recipient names, journal reflections, or comforting thoughts..."
         />
         <button class="clear-search-btn" id="clearGlobalSearch" title="Clear search">&times;</button>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
   <section class="hero" id="home">
     <span class="tagline-pill">A freed Life is a freed Soul.</span>
     <h1>A freed Life, a freed Soul.</h1>
@@ -900,7 +1053,6 @@
     </div>
   </section>
 
-  <!-- Three Core Pillars -->
   <section class="section" id="pillars">
     <div class="pillars-grid">
       <div class="pillar-card" data-jump="Freedom Journal">
@@ -923,7 +1075,6 @@
     </div>
   </section>
 
-  <!-- Moving Slides: Quick Information About Us -->
   <section class="section" id="about">
     <div class="about-carousel-box" id="carouselBox">
       <div class="slides-track">
@@ -964,11 +1115,10 @@
     </div>
   </section>
 
-  <!-- Scrollable "TO: [Name] / MESSAGES" Wall + Search Bar 2 -->
   <section class="section" id="souls">
     <div class="section-header">
       <h2>The Freed Souls &mdash; Open Messages</h2>
-      <p>Send an unsent note, a reminder to someone struggling, or words of kindness to your future self.</p>
+      <p>Click any note to open it and leave comforting words, or write your own message to someone.</p>
     </div>
 
     <div class="messages-controls">
@@ -977,7 +1127,7 @@
         <input
           type="text"
           id="recipientSearchInput"
-          placeholder="Search by recipient name (e.g., To: Maya, Future Me, Anyone Tired)..."
+          placeholder="Search by recipient name or message words (e.g., Maya, Future Me, behind)..."
         />
       </div>
       <button class="btn-primary" id="openToModalBtn">+ Write a &ldquo;To:&rdquo; Message</button>
@@ -986,11 +1136,10 @@
     <div class="messages-scroll-area" id="toMessagesGrid"></div>
   </section>
 
-  <!-- Freedom Journal & Freedom Gallery Feed -->
   <section class="section" id="community-feed">
     <div class="section-header">
       <h2>Reflections &amp; Moments</h2>
-      <p>Explore entries from the Freedom Journal, The Freed Souls, and Freedom Gallery.</p>
+      <p>Click any entry to read the full reflection and leave a supportive note.</p>
     </div>
 
     <div class="filter-pills" id="feedFilters">
@@ -1003,7 +1152,6 @@
     <div class="feed-grid" id="feedGrid"></div>
   </section>
 
-  <!-- Feedback Section -->
   <section class="section" id="feedback">
     <div class="feedback-box">
       <h2>We would love to know what you think about us</h2>
@@ -1033,7 +1181,7 @@
     <p style="margin-top: 0.35rem; font-size: 0.82rem;">A safe space to understand yourself, express your emotions, and breathe.</p>
   </footer>
 
-  <!-- Modal for Posting "To:" Messages or Journal/Gallery Entries -->
+  <!-- Modal 1: Create Post -->
   <div class="modal-backdrop" id="shareModal">
     <div class="modal-card">
       <div class="modal-top">
@@ -1072,49 +1220,113 @@
     </div>
   </div>
 
-  <script>
-    // Initial Data
+  <!-- Modal 2: Reader & Comments -->
+  <div class="modal-backdrop" id="detailModal">
+    <div class="modal-card">
+      <div class="modal-top">
+        <div class="detail-badge-row" id="detailBadges"></div>
+        <button class="clear-search-btn" id="closeDetailModal" aria-label="Close">&times;</button>
+      </div>
+
+      <div id="detailGalleryBanner"></div>
+      <h3 class="detail-title" id="detailTitle"></h3>
+      <div class="detail-full-text" id="detailBody"></div>
+
+      <div class="comments-section">
+        <div class="comments-heading">
+          <span>Words Left by Other Souls</span>
+          <span id="commentCountLabel">0 replies</span>
+        </div>
+
+        <div class="comments-list" id="commentsList"></div>
+
+        <form id="commentForm">
+          <div class="form-field">
+            <label for="commentAuthor">Your Name or Nickname (optional)</label>
+            <input type="text" id="commentAuthor" placeholder="Leave blank to post as Anonymous Soul" />
+          </div>
+          <div class="form-field">
+            <label for="commentInput">Leave Comforting Words</label>
+            <textarea id="commentInput" rows="2" style="min-height: 75px;" placeholder="Write a kind reply, encouragement, or thought..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width: 100%;">Leave Words</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+    import {
+      getFirestore,
+      collection,
+      addDoc,
+      onSnapshot,
+      query,
+      orderBy,
+      serverTimestamp
+    } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDO7Kmj7MwUnPyojj13IuBXr2tWjPDEjwA",
+      authDomain: "libere-platform.firebaseapp.com",
+      projectId: "libere-platform",
+      storageBucket: "libere-platform.firebasestorage.app",
+      messagingSenderId: "927907882950",
+      appId: "1:927907882950:web:d168f88ceb1997f97934c7"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
     const initialToMessages = [
       {
+        id: "to-1",
         to: "Anyone Feeling Behind",
         message: "You are not late to your own life. Take a deep breath—healing and figuring things out do not follow a deadline.",
         tag: "Comfort",
-        date: "Today"
+        date: "Featured"
       },
       {
+        id: "to-2",
         to: "My Future Self",
         message: "I hope you remember how hard we tried during the quiet nights when we doubted everything. I am proud of you for keeping going.",
         tag: "Self-Love",
-        date: "2h ago"
+        date: "Featured"
       },
       {
+        id: "to-3",
         to: "Sam",
         message: "You don't always have to carry everyone else's expectations on your shoulders. It is okay to rest.",
         tag: "Encouragement",
-        date: "5h ago"
+        date: "Featured"
       },
       {
+        id: "to-4",
         to: "The Version of Me Who Tried to Fit In",
         message: "Thank you for trying to keep us safe, but we are allowed to be uniquely ourselves now.",
         tag: "Freedom",
-        date: "1d ago"
+        date: "Featured"
       },
       {
+        id: "to-5",
         to: "Late Night Overthinkers",
         message: "Not every worry in your head is a prediction. Unclench your jaw, drop your shoulders, and let tonight be gentle.",
         tag: "Peace",
-        date: "1d ago"
+        date: "Featured"
       },
       {
+        id: "to-6",
         to: "A Friend I Outgrew",
         message: "Even though our paths went different ways, I still genuinely hope you find everything that makes your soul feel light.",
         tag: "Closure",
-        date: "2d ago"
+        date: "Featured"
       }
     ];
 
     const initialFeedEntries = [
       {
+        id: "feed-1",
         category: "Freedom Journal",
         title: "Outgrowing the Need for Approval",
         meta: "Anonymous Soul · 4 min read",
@@ -1122,6 +1334,7 @@
         gradient: ""
       },
       {
+        id: "feed-2",
         category: "Freedom Gallery",
         title: "October Sunset Over Quiet Rooftops",
         meta: "Captured Moment · Warm Amber",
@@ -1129,13 +1342,15 @@
         gradient: "linear-gradient(135deg, #c26d4a 0%, #d49653 55%, #768868 100%)"
       },
       {
+        id: "feed-3",
         category: "The Freed Souls",
         title: "To Everyone Uncertain About College & Career",
-        meta: "Community Circle · 18 Hearts",
+        meta: "Community Circle · Shared Note",
         content: "You don't need a five-year master plan at nineteen. Focus on the next honest step that aligns with who you are.",
         gradient: ""
       },
       {
+        id: "feed-4",
         category: "Freedom Gallery",
         title: "Morning Tea & Fallen Leaves",
         meta: "Captured Moment · Autumn Sage",
@@ -1144,19 +1359,32 @@
       }
     ];
 
-    // Load saved posts from localStorage
-    const savedTo = JSON.parse(localStorage.getItem("libere_to_messages")) || [];
-    const savedFeed = JSON.parse(localStorage.getItem("libere_feed_entries")) || [];
+    const starterComments = {
+      "to-1": [
+        { author: "Maya", text: "Needed to read this tonight while stressing over deadlines. Thank you.", time: "Featured" }
+      ],
+      "to-2": [
+        { author: "Anonymous Soul", text: "Your future self is already cheering for you.", time: "Featured" }
+      ],
+      "feed-1": [
+        { author: "Liam", text: "Choosing yourself over constant approval is scary at first, but so freeing.", time: "Featured" }
+      ]
+    };
 
-    let toMessages = [...savedTo, ...initialToMessages];
-    let feedEntries = [...savedFeed, ...initialFeedEntries];
+    let cloudToMessages = [];
+    let cloudFeedEntries = [];
+    let allCommentsMap = { ...starterComments };
+
+    let toMessages = [...initialToMessages];
+    let feedEntries = [...initialFeedEntries];
 
     let globalQuery = "";
     let recipientQuery = "";
     let selectedFeedCategory = "all";
+    let activeItemId = null;
 
     function escapeHTML(str) {
-      return str.replace(/[&<>"']/g, ch => ({
+      return String(str).replace(/[&<>"']/g, ch => ({
         "&": "&amp;",
         "<": "&lt;",
         ">": "&gt;",
@@ -1165,15 +1393,81 @@
       }[ch]));
     }
 
-    // Render "TO:" Messages Wall
+    function formatDate(ts) {
+      if (!ts) return "Just now";
+      if (typeof ts === "string") return ts;
+      if (ts.toDate) {
+        return ts.toDate().toLocaleDateString(undefined, { month: "short", day: "numeric" });
+      }
+      return "Recent";
+    }
+
+    function getCommentsFor(id) {
+      return allCommentsMap[id] || [];
+    }
+
+    onSnapshot(
+      query(collection(db, "to_messages"), orderBy("createdAt", "desc")),
+      (snapshot) => {
+        cloudToMessages = snapshot.docs.map(doc => ({
+          id: doc.id,
+          to: doc.data().to || "Someone",
+          message: doc.data().message || "",
+          tag: doc.data().tag || "Soul Note",
+          date: formatDate(doc.data().createdAt)
+        }));
+        toMessages = [...cloudToMessages, ...initialToMessages];
+        renderToMessages();
+      }
+    );
+
+    onSnapshot(
+      query(collection(db, "feed_entries"), orderBy("createdAt", "desc")),
+      (snapshot) => {
+        cloudFeedEntries = snapshot.docs.map(doc => ({
+          id: doc.id,
+          category: doc.data().category || "Freedom Journal",
+          title: doc.data().title || "Untitled Reflection",
+          meta: doc.data().meta || formatDate(doc.data().createdAt),
+          content: doc.data().content || "",
+          gradient: doc.data().gradient || ""
+        }));
+        feedEntries = [...cloudFeedEntries, ...initialFeedEntries];
+        renderFeed();
+      }
+    );
+
+    onSnapshot(
+      query(collection(db, "comments"), orderBy("createdAt", "asc")),
+      (snapshot) => {
+        const rebuilt = { ...starterComments };
+        snapshot.docs.forEach(doc => {
+          const data = doc.data();
+          if (!rebuilt[data.itemId]) rebuilt[data.itemId] = [];
+          rebuilt[data.itemId].push({
+            author: data.author || "Anonymous Soul",
+            text: data.text || "",
+            time: formatDate(data.createdAt)
+          });
+        });
+        allCommentsMap = rebuilt;
+        if (activeItemId) renderModalComments(activeItemId);
+        renderToMessages();
+        renderFeed();
+      }
+    );
+
     function renderToMessages() {
       const container = document.getElementById("toMessagesGrid");
       const filtered = toMessages.filter(item => {
-        const matchesRecipient = item.to.toLowerCase().includes(recipientQuery.toLowerCase());
+        const qLocal = recipientQuery.toLowerCase();
+        const matchesLocal = !qLocal ||
+          item.to.toLowerCase().includes(qLocal) ||
+          item.message.toLowerCase().includes(qLocal);
         const matchesGlobal = !globalQuery ||
           item.to.toLowerCase().includes(globalQuery) ||
           item.message.toLowerCase().includes(globalQuery);
-        return matchesRecipient && matchesGlobal;
+        return matchesLocal && matchesGlobal;
       });
 
       if (filtered.length === 0) {
@@ -1181,24 +1475,27 @@
         return;
       }
 
-      container.innerHTML = filtered.map(item => `
-        <article class="to-card">
-          <div>
-            <div class="to-header">
-              <span class="to-recipient">TO: ${escapeHTML(item.to)}</span>
-              <span class="to-tag">${escapeHTML(item.tag || "Soul Note")}</span>
+      container.innerHTML = filtered.map(item => {
+        const count = getCommentsFor(item.id).length;
+        const replyLabel = count === 0 ? "Leave words" : `${count} ${count === 1 ? "word" : "words"}`;
+        return `
+          <article class="to-card" data-open-type="to" data-id="${escapeHTML(item.id)}">
+            <div>
+              <div class="to-header">
+                <span class="to-recipient">TO: ${escapeHTML(item.to)}</span>
+                <span class="to-tag">${escapeHTML(item.tag || "Soul Note")}</span>
+              </div>
+              <p class="to-body">&ldquo;${escapeHTML(item.message)}&rdquo;</p>
             </div>
-            <p class="to-body">&ldquo;${escapeHTML(item.message)}&rdquo;</p>
-          </div>
-          <div class="to-footer">
-            <span>Liberé Wall</span>
-            <span>${escapeHTML(item.date)}</span>
-          </div>
-        </article>
-      `).join("");
+            <div class="to-footer">
+              <span>${escapeHTML(item.date)}</span>
+              <span class="reply-pill">&#128172; ${replyLabel}</span>
+            </div>
+          </article>
+        `;
+      }).join("");
     }
 
-    // Render Journal, Freed Souls & Gallery Feed
     function renderFeed() {
       const container = document.getElementById("feedGrid");
       const filtered = feedEntries.filter(item => {
@@ -1215,20 +1512,127 @@
         return;
       }
 
-      container.innerHTML = filtered.map(item => `
-        <article class="feed-card">
-          ${item.gradient ? `<div class="gallery-visual" style="background: ${item.gradient};">Freedom Gallery Frame</div>` : ""}
-          <div class="feed-meta">
-            <span class="feed-badge">${escapeHTML(item.category)}</span>
-            <span>${escapeHTML(item.meta)}</span>
+      container.innerHTML = filtered.map(item => {
+        const count = getCommentsFor(item.id).length;
+        const replyLabel = count === 0 ? "Leave a note" : `${count} ${count === 1 ? "note" : "notes"}`;
+        return `
+          <article class="feed-card" data-open-type="feed" data-id="${escapeHTML(item.id)}">
+            <div>
+              ${item.gradient ? `<div class="gallery-visual" style="background: ${item.gradient};">Freedom Gallery Frame</div>` : ""}
+              <div class="feed-meta">
+                <span class="feed-badge">${escapeHTML(item.category)}</span>
+                <span>${escapeHTML(item.meta)}</span>
+              </div>
+              <h4>${escapeHTML(item.title)}</h4>
+              <p>${escapeHTML(item.content)}</p>
+            </div>
+            <div class="feed-footer">
+              <span>Click to open</span>
+              <span class="reply-pill">&#128172; ${replyLabel}</span>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    const detailModal = document.getElementById("detailModal");
+
+    function renderModalComments(itemId) {
+      const comments = getCommentsFor(itemId);
+      const listEl = document.getElementById("commentsList");
+      const countEl = document.getElementById("commentCountLabel");
+
+      countEl.textContent = `${comments.length} ${comments.length === 1 ? "reply" : "replies"}`;
+
+      if (comments.length === 0) {
+        listEl.innerHTML = `<div class="no-comments-note">No words left here yet. Be the first soul to leave a comforting note below.</div>`;
+        return;
+      }
+
+      listEl.innerHTML = comments.map(c => `
+        <div class="comment-bubble">
+          <div class="comment-bubble-top">
+            <span class="comment-author">${escapeHTML(c.author)}</span>
+            <span class="comment-time">${escapeHTML(c.time)}</span>
           </div>
-          <h4>${escapeHTML(item.title)}</h4>
-          <p>${escapeHTML(item.content)}</p>
-        </article>
+          <div class="comment-text">${escapeHTML(c.text)}</div>
+        </div>
       `).join("");
     }
 
-    // Moving Slides Logic (Quick Information About Us)
+    function openDetailModal(type, id) {
+      activeItemId = id;
+      const badgesEl = document.getElementById("detailBadges");
+      const bannerEl = document.getElementById("detailGalleryBanner");
+      const titleEl = document.getElementById("detailTitle");
+      const bodyEl = document.getElementById("detailBody");
+
+      if (type === "to") {
+        const item = toMessages.find(m => m.id === id);
+        if (!item) return;
+        badgesEl.innerHTML = `
+          <span class="to-tag">${escapeHTML(item.tag || "Soul Note")}</span>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">${escapeHTML(item.date)}</span>
+        `;
+        bannerEl.innerHTML = "";
+        titleEl.className = "detail-title is-to";
+        titleEl.textContent = `TO: ${item.to}`;
+        bodyEl.textContent = `“${item.message}”`;
+      } else {
+        const item = feedEntries.find(f => f.id === id);
+        if (!item) return;
+        badgesEl.innerHTML = `
+          <span class="feed-badge">${escapeHTML(item.category)}</span>
+          <span style="font-size: 0.8rem; color: var(--text-muted);">${escapeHTML(item.meta)}</span>
+        `;
+        bannerEl.innerHTML = item.gradient
+          ? `<div class="gallery-visual" style="background: ${item.gradient};">Freedom Gallery Frame</div>`
+          : "";
+        titleEl.className = "detail-title";
+        titleEl.textContent = item.title;
+        bodyEl.textContent = item.content;
+      }
+
+      renderModalComments(id);
+      detailModal.classList.add("open");
+    }
+
+    document.getElementById("toMessagesGrid").addEventListener("click", (e) => {
+      const card = e.target.closest(".to-card");
+      if (card) openDetailModal("to", card.dataset.id);
+    });
+
+    document.getElementById("feedGrid").addEventListener("click", (e) => {
+      const card = e.target.closest(".feed-card");
+      if (card) openDetailModal("feed", card.dataset.id);
+    });
+
+    document.getElementById("commentForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!activeItemId) return;
+
+      const authorVal = document.getElementById("commentAuthor").value.trim() || "Anonymous Soul";
+      const textVal = document.getElementById("commentInput").value.trim();
+      if (!textVal) return;
+
+      await addDoc(collection(db, "comments"), {
+        itemId: activeItemId,
+        author: authorVal,
+        text: textVal,
+        createdAt: serverTimestamp()
+      });
+
+      e.target.reset();
+    });
+
+    document.getElementById("closeDetailModal").addEventListener("click", () => {
+      detailModal.classList.remove("open");
+    });
+
+    detailModal.addEventListener("click", (e) => {
+      if (e.target === detailModal) detailModal.classList.remove("open");
+    });
+
     const slides = document.querySelectorAll(".slide");
     const dots = document.querySelectorAll(".dot");
     let currentSlide = 0;
@@ -1252,7 +1656,6 @@
       slideTimer = setInterval(() => showSlide(currentSlide + 1), 5000);
     });
 
-    // Global Expandable Search Bar
     const globalSearchBar = document.getElementById("globalSearchBar");
     const globalSearchInput = document.getElementById("globalSearchInput");
 
@@ -1276,13 +1679,11 @@
       renderFeed();
     });
 
-    // Dedicated "TO:" Recipient Search Bar
     document.getElementById("recipientSearchInput").addEventListener("input", (e) => {
       recipientQuery = e.target.value.trim();
       renderToMessages();
     });
 
-    // Pillar Card Jump & Filter
     document.querySelectorAll(".pillar-card").forEach(card => {
       card.addEventListener("click", () => {
         const targetCat = card.dataset.jump;
@@ -1295,7 +1696,6 @@
       });
     });
 
-    // Feed Category Pills
     document.querySelectorAll(".pill-btn").forEach(btn => {
       btn.addEventListener("click", () => {
         document.querySelectorAll(".pill-btn").forEach(b => b.classList.remove("active"));
@@ -1305,12 +1705,10 @@
       });
     });
 
-    // Notification Bell Gentle Reminder
     document.getElementById("notifBtn").addEventListener("click", () => {
       alert("Daily Liberé Reminder:\n\nYou were born to live, not merely to fit in. Take a slow breath today.");
     });
 
-    // Modal Controls
     const shareModal = document.getElementById("shareModal");
     const postTypeSelect = document.getElementById("postType");
     const recipientField = document.getElementById("recipientField");
@@ -1338,45 +1736,39 @@
       if (e.target === shareModal) shareModal.classList.remove("open");
     });
 
-    document.getElementById("postForm").addEventListener("submit", (e) => {
+    document.getElementById("postForm").addEventListener("submit", async (e) => {
       e.preventDefault();
       const type = postTypeSelect.value;
       const content = document.getElementById("postContent").value.trim();
+      if (!content) return;
 
       if (type === "to-message") {
         const recipient = document.getElementById("postRecipient").value.trim() || "Someone Who Needs This";
-        const newMsg = {
+        await addDoc(collection(db, "to_messages"), {
           to: recipient,
           message: content,
-          tag: "New Note",
-          date: "Just now"
-        };
-        savedTo.unshift(newMsg);
-        localStorage.setItem("libere_to_messages", JSON.stringify(savedTo));
-        toMessages = [...savedTo, ...initialToMessages];
-        renderToMessages();
+          tag: "Soul Note",
+          createdAt: serverTimestamp()
+        });
       } else {
         const title = document.getElementById("postHeadline").value.trim() || "Untitled Reflection";
-        const newEntry = {
+        const gradientVal = type === "Freedom Gallery"
+          ? "linear-gradient(135deg, #d49653 0%, #c26d4a 55%, #768868 100%)"
+          : "";
+        await addDoc(collection(db, "feed_entries"), {
           category: type,
           title,
-          meta: "Shared Just Now",
+          meta: "Shared by a Soul",
           content,
-          gradient: type === "Freedom Gallery"
-            ? "linear-gradient(135deg, #d49653 0%, #c26d4a 55%, #768868 100%)"
-            : ""
-        };
-        savedFeed.unshift(newEntry);
-        localStorage.setItem("libere_feed_entries", JSON.stringify(savedFeed));
-        feedEntries = [...savedFeed, ...initialFeedEntries];
-        renderFeed();
+          gradient: gradientVal,
+          createdAt: serverTimestamp()
+        });
       }
 
       e.target.reset();
       shareModal.classList.remove("open");
     });
 
-    // Feedback Section Interactions
     document.querySelectorAll(".mood-btn").forEach(btn => {
       btn.addEventListener("click", () => {
         document.querySelectorAll(".mood-btn").forEach(b => b.classList.remove("selected"));
@@ -1384,8 +1776,22 @@
       });
     });
 
-    document.getElementById("feedbackForm").addEventListener("submit", (e) => {
+    document.getElementById("feedbackForm").addEventListener("submit", async (e) => {
       e.preventDefault();
+      const nameVal = document.getElementById("feedbackName").value.trim() || "Anonymous";
+      const msgVal = document.getElementById("feedbackMessage").value.trim();
+      const selectedMoodEl = document.querySelector(".mood-btn.selected");
+      const moodVal = selectedMoodEl ? selectedMoodEl.dataset.mood : "None";
+
+      if (msgVal) {
+        await addDoc(collection(db, "feedback"), {
+          name: nameVal,
+          mood: moodVal,
+          message: msgVal,
+          createdAt: serverTimestamp()
+        });
+      }
+
       e.target.reset();
       document.querySelectorAll(".mood-btn").forEach(b => b.classList.remove("selected"));
       const successBox = document.getElementById("feedbackSuccess");
@@ -1395,7 +1801,13 @@
       }, 4500);
     });
 
-    // Initial Render
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        shareModal.classList.remove("open");
+        detailModal.classList.remove("open");
+      }
+    });
+
     renderToMessages();
     renderFeed();
   </script>
